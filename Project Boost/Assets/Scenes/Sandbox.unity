@@ -558,13 +558,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2660961742276714451, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
-      propertyPath: thrustForce
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3700762700976019609, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
-      propertyPath: m_Constraints
-      value: 56
+    - target: {fileID: 1696708187766247841, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9178299430315812275, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
       propertyPath: m_Height
@@ -585,6 +581,30 @@ PrefabInstance:
     - target: {fileID: 9178299430315812275, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
       propertyPath: m_Center.z
       value: 0.2167242
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178299430506890569, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5845847
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178299430506890569, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
+      propertyPath: m_Center.y
+      value: 0.20770782
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178299430639883961, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
+      propertyPath: m_Size.y
+      value: 0.57076204
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178299430639883961, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
+      propertyPath: m_Center.y
+      value: 0.21461947
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178299431069413916, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5695285
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178299431069413916, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
+      propertyPath: m_Center.y
+      value: 0.21523724
       objectReference: {fileID: 0}
     - target: {fileID: 9178299431348691930, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
       propertyPath: m_RootOrder
@@ -633,6 +653,14 @@ PrefabInstance:
     - target: {fileID: 9178299431348691931, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
       propertyPath: m_Name
       value: Rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178299432071930953, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5919618
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178299432071930953, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
+      propertyPath: m_Center.y
+      value: 0.20401959
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}

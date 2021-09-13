@@ -10,36 +10,27 @@ public class Movement : MonoBehaviour
     public Rigidbody rb;
     
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         ProcessThrust();
         ProcessRotation();
     }
 
-    void ProcessThrust() 
-    {
-        if (Input.GetKey(KeyCode.Space)) 
-        {
+    void ProcessThrust() {
+        if (Input.GetKey(KeyCode.Space)) {
             Debug.Log("Pressed SPACE - Thrust applied");
             rb.AddRelativeForce(Vector3.up * thrustForce);
         }
     }
 
-    void ProcessRotation() 
-    {
-        if (Input.GetKey(KeyCode.LeftArrow)) 
-        {
+    void ProcessRotation() {
+        if (Input.GetKey(KeyCode.LeftArrow)) {
             Debug.Log("Pressed LEFT - Rocket turned left");
             transform.Rotate(0f, 0f, rotationSpeed);
-        } 
-        else if (Input.GetKey(KeyCode.RightArrow)) 
-        {
+        } else if (Input.GetKey(KeyCode.RightArrow)) {
             Debug.Log("Pressed RIGHT - Rocket turned right");
             transform.Rotate(0f, 0f, -rotationSpeed);
         }
