@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour {
     [SerializeField] float thrustForce = 800f;
     [SerializeField] float rotationSpeed = 150f;
 
-    public Rigidbody rb;
+    public float pitchLow = 0.6f;
+    public float pitchHigh = 1.0f;
 
-    // Start is called before the first frame update
+    public Rigidbody rb;
+    public AudioSource audioSource;
+
     void Start() {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -22,6 +24,9 @@ public class Movement : MonoBehaviour {
         if (Input.GetKey(KeyCode.Space)) {
             Debug.Log("Pressed SPACE - Thrust applied");
             rb.AddRelativeForce(Vector3.up * thrustForce * Time.deltaTime);
+            audioSource.pitch = pitchHigh;
+        } else {
+            audioSource.pitch = pitchLow;
         }
     }
 
@@ -36,6 +41,8 @@ public class Movement : MonoBehaviour {
     }
 
     void RotateShip(float rotationThisFrame) {
+        rb.freezeRotation = true; // Freezing physics rotation so we can manually rotate the ship
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionZ; // This goes back to using physics engine constraints
     }
 }
