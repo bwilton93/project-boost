@@ -17,11 +17,22 @@ public class CollisionHandler : MonoBehaviour {
             case "Finish":
                 Debug.Log("This is a landing pad");
                 rb.velocity = new Vector3(0, 0, 0);
+                LoadNextLevel();
                 break;
             default:
                 Debug.Log("This is the environment");
-                SceneManager.LoadScene("Sandbox");
+                ReloadScene();
                 break;
         }
+    }
+
+    void LoadNextLevel() {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+    void ReloadScene() {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }
