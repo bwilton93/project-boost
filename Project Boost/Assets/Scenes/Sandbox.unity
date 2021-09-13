@@ -558,6 +558,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2660961742276714451, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
+      propertyPath: thrustForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700762700976019609, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
+      propertyPath: m_Constraints
+      value: 56
+      objectReference: {fileID: 0}
     - target: {fileID: 9178299430315812275, guid: dcca3571adbe0624783f04f92ce05e18, type: 3}
       propertyPath: m_Height
       value: 103.9337
