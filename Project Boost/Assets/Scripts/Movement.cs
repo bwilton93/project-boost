@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] float thrustForce = 20f;
+    [SerializeField] float rotationSpeed = 1f;
 
     public Rigidbody rb;
     
@@ -35,10 +36,12 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow)) 
         {
             Debug.Log("Pressed LEFT - Rocket turned left");
+            transform.Rotate(0f, 0f, rotationSpeed);
         } 
         else if (Input.GetKey(KeyCode.RightArrow)) 
         {
             Debug.Log("Pressed RIGHT - Rocket turned right");
+            transform.Rotate(0f, 0f, -rotationSpeed);
         }
     }
 }
