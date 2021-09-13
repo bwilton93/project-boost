@@ -17,11 +17,7 @@ public class LevelComplete : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        if (other.collider.tag == "Rocket Feet") {
-            Debug.Log("You win!");
-            GameObject.Find("Rocket").GetComponent<Movement>().rb.velocity = new Vector3(0, 0, 0);
-        } else {
-            Debug.Log("You lose!");
-        }
+        Debug.Log("You win!");
+        GameObject.Find("Rocket").GetComponent<Movement>().rb.velocity = new Vector3(0, 0, 0);
     }
 }
