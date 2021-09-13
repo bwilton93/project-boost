@@ -3,12 +3,14 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
     [SerializeField] float thrustForce = 800f;
     [SerializeField] float rotationSpeed = 150f;
-
-    public float pitchLow = 0.6f;
-    public float pitchHigh = 1.0f;
+    [SerializeField] AudioClip mainEngine;
+    [SerializeField] float pitchLow = 0.6f;
+    [SerializeField] float pitchHigh = 1.0f;
 
     public Rigidbody rb;
     public AudioSource audioSource;
+
+    public bool isAlive = true;
 
     void Start() {
         rb = GetComponent<Rigidbody>();
@@ -18,6 +20,9 @@ public class Movement : MonoBehaviour {
     void Update() {
         ProcessThrust();
         ProcessRotation();
+        if (isAlive && !audioSource.isPlaying) {
+            audioSource.PlayOneShot(mainEngine);
+        }
     }
 
     void ProcessThrust() {
