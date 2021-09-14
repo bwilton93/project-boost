@@ -13,5 +13,8 @@ EditorBuildSettings:
     guid: 09d570a5f0a5ba843a5baddad0878bef
   - enabled: 1
     path: Assets/Scenes/Over - Under.unity
+    guid: 8be0733bd40755240985498c9e1a58a0
+  - enabled: 1
+    path: Assets/Scenes/Lab - Slider.unity
     guid: 017adbf65b30c924a846912595566770
   m_configObjects: {}
