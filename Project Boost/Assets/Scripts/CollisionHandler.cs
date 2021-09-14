@@ -15,14 +15,26 @@ public class CollisionHandler : MonoBehaviour {
     public AudioSource audioSource;
 
     bool isTransitioning = false;
+    bool collisionEnabled = true;
 
     void Start() {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
     }
 
+    public void SwitchCollisionState() {
+        if (collisionEnabled) { 
+            collisionEnabled = false;
+            Debug.Log("Collisions disabled"); 
+        } else {
+            collisionEnabled = true; 
+            Debug.Log("Collisions enabled");
+        }
+    }
+
     void OnCollisionEnter(Collision other) {
-        if (isTransitioning) { return; } 
+        if (isTransitioning) { return; }
+        if (!collisionEnabled) { return; } 
         
         switch (other.gameObject.tag) {
             case "Friendly":
@@ -80,7 +92,7 @@ public class CollisionHandler : MonoBehaviour {
         audioSource.pitch = pitchHigh;
     }
 
-    void LoadNextLevel() {
+    public void LoadNextLevel() {
         isTransitioning = false;
         GetComponent<Movement>().isAlive = true;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
