@@ -23,12 +23,11 @@ public class CollisionHandler : MonoBehaviour {
     }
 
     public void SwitchCollisionState() {
+        collisionEnabled = !collisionEnabled;
         if (collisionEnabled) { 
-            collisionEnabled = false;
-            Debug.Log("Collisions disabled"); 
+            Debug.Log("Collisions enabled"); 
         } else {
-            collisionEnabled = true; 
-            Debug.Log("Collisions enabled");
+            Debug.Log("Collisions disabled");
         }
     }
 
