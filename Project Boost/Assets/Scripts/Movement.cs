@@ -7,6 +7,12 @@ public class Movement : MonoBehaviour {
     [SerializeField] float pitchLow = 0.6f;
     [SerializeField] float pitchHigh = 1.0f;
 
+    [SerializeField] ParticleSystem mainThrust;
+    [SerializeField] ParticleSystem thrustLF;
+    [SerializeField] ParticleSystem thrustLR;
+    [SerializeField] ParticleSystem thrustRF;
+    [SerializeField] ParticleSystem thrustRR;
+
     public Rigidbody rb;
     public AudioSource audioSource;
 
@@ -20,34 +26,73 @@ public class Movement : MonoBehaviour {
     void Update() {
         ProcessThrust();
         ProcessRotation();
-        if (isAlive && !audioSource.isPlaying) {
-            audioSource.PlayOneShot(mainEngine);
-        }
+        PlayEngineSound();
     }
+
 
     void ProcessThrust() {
         if (Input.GetKey(KeyCode.Space)) {
-            Debug.Log("Pressed SPACE - Thrust applied");
-            rb.AddRelativeForce(Vector3.up * thrustForce * Time.deltaTime);
-            audioSource.pitch = pitchHigh;
+            ApplyThrust();
         } else {
-            audioSource.pitch = pitchLow;
+            StopThrust();
         }
     }
 
     void ProcessRotation() {
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) {
-            Debug.Log("Pressed LEFT - Rocket turned left");
+            playSideThrust(thrustRF, thrustRR);
             RotateShip(rotationSpeed);
         } else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
-            Debug.Log("Pressed RIGHT - Rocket turned right");
+            playSideThrust(thrustLF, thrustLR);
             RotateShip(-rotationSpeed);
+        } else {
+            StopSideThrust();
         }
     }
+
+    void PlayEngineSound() {
+        if (isAlive && !audioSource.isPlaying) {
+            audioSource.PlayOneShot(mainEngine);
+        }
+    }
+
+    void ApplyThrust() {
+        Debug.Log("Pressed SPACE - Thrust applied");
+        rb.AddRelativeForce(Vector3.up * thrustForce * Time.deltaTime);
+        audioSource.pitch = pitchHigh;
+        PlayMainThrust();
+    }
+
+    void PlayMainThrust() {
+        if (!mainThrust.isPlaying) {
+            mainThrust.Play();
+        }
+    }
+
+    void StopThrust() {
+        audioSource.pitch = pitchLow;
+        mainThrust.Stop();
+    }
+
 
     void RotateShip(float rotationThisFrame) {
         rb.freezeRotation = true; // Freezing physics rotation so we can manually rotate the ship
         transform.Rotate(Vector3.forward * rotationThisFrame * Time.deltaTime);
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezePositionZ; // This goes back to using physics engine constraints
     }
+
+    void playSideThrust(ParticleSystem particle1, ParticleSystem particle2) {
+        if (!particle1.isPlaying && !particle2.isPlaying) {
+            particle1.Play();
+            particle2.Play();
+        }
+    }
+
+    void StopSideThrust() {
+        thrustLF.Stop();
+        thrustLR.Stop();
+        thrustRF.Stop();
+        thrustRR.Stop();
+    }
+
 }

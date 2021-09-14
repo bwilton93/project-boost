@@ -5,6 +5,10 @@ public class CollisionHandler : MonoBehaviour {
     [SerializeField] float delayTime = 1f;
     [SerializeField] AudioClip explosionSound;
     [SerializeField] AudioClip levelSuccess;
+    
+    [SerializeField] ParticleSystem explosionParticles;
+    [SerializeField] ParticleSystem successParticles;
+    
     float pitchHigh = 1.0f;
 
     public Rigidbody rb;
@@ -61,12 +65,14 @@ public class CollisionHandler : MonoBehaviour {
 
     private void PlayExplosion() {
         AudioReset();
+        explosionParticles.Play();
         audioSource.PlayOneShot(explosionSound);
     }
 
     private void PlaySuccess() {
         AudioReset();
         audioSource.PlayOneShot(levelSuccess);
+        successParticles.Play();
     }
 
     private void AudioReset() {
@@ -80,7 +86,7 @@ public class CollisionHandler : MonoBehaviour {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
         if (nextSceneIndex == SceneManager.sceneCountInBuildSettings) {
-            nextSceneIndex = 0;
+            nextSceneIndex = 0; // This resets game when you beat the final level
         }
         SceneManager.LoadScene(nextSceneIndex);
     }
