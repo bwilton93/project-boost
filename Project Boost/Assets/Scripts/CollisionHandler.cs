@@ -15,7 +15,7 @@ public class CollisionHandler : MonoBehaviour {
     public AudioSource audioSource;
 
     bool isTransitioning = false;
-    bool collisionEnabled = true;
+    bool collisionDisabled = false;
 
     void Start() {
         rb = GetComponent<Rigidbody>();
@@ -23,17 +23,16 @@ public class CollisionHandler : MonoBehaviour {
     }
 
     public void SwitchCollisionState() {
-        collisionEnabled = !collisionEnabled;
-        if (collisionEnabled) { 
-            Debug.Log("Collisions enabled"); 
+        collisionDisabled = !collisionDisabled;
+        if (collisionDisabled) { 
+            Debug.Log("Collisions disabled"); 
         } else {
-            Debug.Log("Collisions disabled");
+            Debug.Log("Collisions enabled");
         }
     }
 
     void OnCollisionEnter(Collision other) {
-        if (isTransitioning) { return; }
-        if (!collisionEnabled) { return; } 
+        if (isTransitioning || collisionDisabled) { return; }
         
         switch (other.gameObject.tag) {
             case "Friendly":
