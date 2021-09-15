@@ -312,7 +312,7 @@ Transform:
   - {fileID: 1921138164}
   - {fileID: 838793108}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &491259654
 PrefabInstance:
@@ -1015,7 +1015,7 @@ Transform:
   - {fileID: 1807880575}
   - {fileID: 1541372867}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1250666892
 PrefabInstance:
@@ -1216,7 +1216,7 @@ Transform:
   m_Children:
   - {fileID: 1593564541}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1807880575 stripped
 Transform:
