@@ -43,7 +43,7 @@ public class DoorSwitch : MonoBehaviour {
         }
     }
 
-    private void ChangeSwitchMaterial() {
+    void ChangeSwitchMaterial() {
         // Get parent game object and find total number of children objects
         GameObject parent = transform.parent.gameObject;
         int numOfChildren = parent.transform.childCount;
