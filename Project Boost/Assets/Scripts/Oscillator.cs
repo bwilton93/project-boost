@@ -14,6 +14,9 @@ public class Oscillator : MonoBehaviour {
     }
 
     void Update() {
+        if (period <= Mathf.Epsilon) { return; } // Protects against NaN error
+        // Mathf.Epsilon is the smallest float available
+
         float cycles = Time.time / period; // Constantly grows over time
 
         const float tau = Mathf.PI * 2; // Constant value of 6.283
