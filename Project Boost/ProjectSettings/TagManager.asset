@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Friendly
+  - Switch Button
   layers:
   - Default
   - TransparentFX

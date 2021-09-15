@@ -5,7 +5,6 @@ public class CollisionHandler : MonoBehaviour {
     [SerializeField] float delayTime = 1f;
     [SerializeField] AudioClip explosionSound;
     [SerializeField] AudioClip levelSuccess;
-    
     [SerializeField] ParticleSystem explosionParticles;
     [SerializeField] ParticleSystem successParticles;
     
@@ -42,6 +41,9 @@ public class CollisionHandler : MonoBehaviour {
             case "Finish":
                 Debug.Log("This is a landing pad");
                 SuccessSequence();
+                break;
+            case "Switch Button":
+                rb.velocity = new Vector3(0, 0, 0);
                 break;
             default:
                 Debug.Log("This is the environment");
